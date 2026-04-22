@@ -1,4 +1,4 @@
-# my-claude-skills
+# Collection of claude skills and Agents for QA
 
 A curated collection of best-in-class Claude Code skills for QA, testing, and quality engineering — sourced from the top open-source repositories and adapted for production use.
 
