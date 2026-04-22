@@ -21,6 +21,47 @@ A curated collection of best-in-class Claude Code skills for QA, testing, and qu
 
 ---
 
+## QA Lifecycle Agents
+
+A coordinated agent pipeline covering the full QA lifecycle — from planning through release. Each agent has a defined role, structured inputs/outputs, and passes a handoff package to the next stage.
+
+```
+[00-orchestrator] ──► [01-planner] ──► [02-test-prep] ──► [03-executor]
+                                                                │
+                                              ┌─────────────────┤
+                                              ▼                 ▼
+                                      [05-defect-triage]  [04-reporter]
+                                              │                 │
+                                              └────────┬────────┘
+                                                       ▼
+                                             [06-release-readiness]
+                                               GO / NO-GO / CONDITIONAL
+```
+
+| Agent | File | Role |
+|-------|------|------|
+| [QA Orchestrator](agents/00-qa-orchestrator.agent.md) | `00-qa-orchestrator` | Routes requests, sequences pipeline, resolves conflicts, owns final verdict |
+| [QA Planner](agents/01-qa-planner.agent.md) | `01-qa-planner` | Risk register, test scope, approach by level, effort estimate, entry/exit criteria |
+| [Test Prep](agents/02-test-prep.agent.md) | `02-test-prep` | Test cases (ISTQB), test data factories, environment checklist, Playwright scaffolds |
+| [Test Executor](agents/03-test-executor.agent.md) | `03-test-executor` | Runs suites, captures failures with reproduction context, tracks progress |
+| [Test Reporter](agents/04-test-reporter.agent.md) | `04-test-reporter` | Metrics dashboard, trend analysis, health score, executive summary |
+| [Defect Triage](agents/05-defect-triage.agent.md) | `05-defect-triage` | Severity/priority classification, duplicate detection, root cause hypotheses |
+| [Release Readiness](agents/06-release-readiness.agent.md) | `06-release-readiness` | GO / NO-GO / CONDITIONAL-GO with evidence, risk disclosure, sign-off matrix |
+
+### How to Use Agents in Claude Code
+
+**Full pipeline** (start here for any sprint/release cycle):
+> "Run the QA Orchestrator for [feature/sprint]. Context: [description]"
+
+**Single agent** (jump in at any phase):
+> "Use the QA Planner to create a test plan for [user story]"
+> "Use the Defect Triage agent on these failures: [paste executor output]"
+> "Use the Release Readiness agent — here are the test results: [paste reporter output]"
+
+**As Claude Code subagents** — paste any agent's `.agent.md` content into a Claude Code subagent definition for automated multi-agent pipelines.
+
+---
+
 ## How to Use These Skills
 
 ### Option A — Load directly as context
