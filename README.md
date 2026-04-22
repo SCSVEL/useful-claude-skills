@@ -125,5 +125,3 @@ These skills are curated and synthesized from:
 - [travisvn/awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) — Curated community skills directory
 
 ---
-
-Owner: [SCSVEL](https://github.com/SCSVEL) | Project context: [MyHomeDoctor](https://github.com/SCSVEL/MyHomeDoctor)
